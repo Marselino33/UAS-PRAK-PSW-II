@@ -6,8 +6,12 @@ use App\Models\Booking;
 use App\Models\Lapangan;
 use App\Models\Lokasi;
 use App\Models\Pengelola;
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class PengelolaController extends Controller
 {
@@ -113,5 +117,67 @@ class PengelolaController extends Controller
         $lapangan = Lapangan::all();
 
         return view('pengelola.booking', compact('booking', 'lapangan', 'lokasi'));
+    }
+
+    public function terimabooking($id){
+        $booking = Booking::find($id);
+        if ($booking) {
+            $booking->status = 'Disetujui';
+            $booking->save();
+            return redirect()->back()->with('success', 'Pesanan Lapangan berhasil disetujui.');
+        }
+        return redirect()->back()->with('error', 'Pesanan Lapangan tidak ditemukan.');
+    }
+
+    public function tolakbooking($id){
+        $booking = Booking::find($id);
+        if ($booking) {
+            $booking->status = 'Ditolak';
+            $booking->save();
+            return redirect()->back()->with('success', 'Pesanan Lapangan berhasil ditolak.');
+        }
+        return redirect()->back()->with('error', 'Pesanan Lapangan tidak ditemukan.');
+    }
+
+    public function indexmember(){
+        $member = Pengguna::all();
+        return view('pengelola.member', compact('member'));
+       }
+
+       public function hapusmember($id){
+        DB::table('penggunas')->where('id', $id)->delete();
+    
+            Session::flash('success', 'Data Member berhasil dihapus!');
+    
+            return Redirect()->route('indexmember');
+       }
+
+       public function createmember(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'noHp' => 'required|string|max:15',
+            'username' => 'required|string|min:5|max:20',
+            'password' => 'required|string|min:5|max:10',
+
+        ],[
+            'nama.required' => 'Nama harus diisi',
+            'nomor_hp.required' => 'Nomor Hp harus diisi',
+            'username.required' => 'Username harus diisi',
+            'username.min' => 'Username minimal 5 karakter',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password minimal 5 karakter',
+        ]);
+
+        DB::table('penggunas')->insert([
+            'nama' => $validatedData['nama'],
+            'noHp' => $validatedData['noHp'],
+            'username' => $validatedData['username'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        Session::flash('success', 'Data Member baru dengan nama "' . $validatedData['nama'] . '" berhasil ditambahkan!');
+
+        return redirect()->route('indexmember');
     }
 }

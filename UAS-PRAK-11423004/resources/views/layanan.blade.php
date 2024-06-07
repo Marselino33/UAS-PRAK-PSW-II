@@ -18,7 +18,7 @@
                 <span class="bi bi-cart"></span>
               </div>
               <div class="card-title-c align-self-center">
-                <h2 class="title-c">Kepuasan Pelanggan</h2>
+                <h2 class="title-c">Kepentingan Pelanggan</h2>
               </div>
             </div>
             <div class="card-body-c">
@@ -35,7 +35,7 @@
                 <span class="bi bi-calendar4-week"></span>
               </div>
               <div class="card-title-c align-self-center">
-                <h2 class="title-c">Tepat Waktu</h2>
+                <h2 class="title-c">Efesiensi Waktu dan keramahan</h2>
               </div>
             </div>
             <div class="card-body-c">
@@ -52,7 +52,7 @@
                 <span class="bi bi-card-checklist"></span>
               </div>
               <div class="card-title-c align-self-center">
-                <h2 class="title-c">Keamanan Akun</h2>
+                <h2 class="title-c">Keamanan Akun Pelanggan</h2>
               </div>
             </div>
             <div class="card-body-c">

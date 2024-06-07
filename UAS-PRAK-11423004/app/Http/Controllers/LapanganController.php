@@ -100,7 +100,7 @@ class LapanganController extends Controller
     // Lakukan update hanya dengan data yang tersedia, untuk menghindari kesalahan seperti ini
     DB::table('lapangans')->where('id', $id)->update($updateData);
 
-    // Menampi lkan pesan sukses
+    // Menampilkan pesan sukses
     Session::flash('success', 'Data Lapangan dengan nama "' . $request->namaLapangan . '" berhasil diubah!');
 
     return redirect()->route('indexlapangan');

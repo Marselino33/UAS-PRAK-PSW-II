@@ -15,7 +15,7 @@ class PengelolaSeeder extends Seeder
     public function run(): void
     {
         DB::table('pengelolas')->insert([
-            'namaPengelola' => 'Budigaming',
+            'namaPengelola' => 'pak',
             'username' => 'pengelola',
             'password' => Hash::make('pengelolaganteng'),
         ]);

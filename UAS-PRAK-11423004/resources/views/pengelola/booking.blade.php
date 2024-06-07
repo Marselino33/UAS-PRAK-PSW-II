@@ -51,6 +51,16 @@
                     <br>
                     <div class="card-body">
                         <table id="table_id" class="dataTable table table-bordered">
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -61,6 +71,7 @@
                                     <th>Waktu Mulai</th>
                                     <th>Waktu Selesai</th>
                                     <th>Harga Lapangan</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -75,9 +86,21 @@
                                         <td>{{ $bok->waktuMulai }}</td>
                                         <td>{{ $bok->waktuSelesai }}</td>
                                         <td>{{ $bok->hargaTotal }}</td>
+                                        <td>{{ $bok->status }}</td>
                                         <td>
-                                            <a href=""
-                                                class="btn btn-danger btn-sm">Tolak</a>
+                                            @if ($bok->status == 'Menunggu Persetujuan')
+                                                <form action="{{ route('terimabooking', $bok->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm">Terima</button>
+                                                </form>
+                                                <br><br>
+                                                <form action="{{ route('tolakbooking', $bok->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger btn-sm">Tolak</button>
+                                                </form>
+                                            @else
+                                                {{ $bok->status }}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

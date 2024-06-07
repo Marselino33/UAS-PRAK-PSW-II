@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Member
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         $user = $request->user();
-        if ($user && $user->role == 'admin') {
+        if ($user && $user->role == 'member') {
             return $next($request);
         }
-        abort(403, 'Akses Anda ditolak, Anda bukan admin');
+        abort(403, 'Akses Anda ditolak, Anda bukan Member');
     }
 }

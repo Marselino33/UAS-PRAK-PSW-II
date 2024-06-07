@@ -45,13 +45,13 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Badminton Jaya
+                    <p class="intro-title-top">Badminton Hebat
                     </p>
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">Kurangi berat badanmu dengan bermain badminton
+                      <span class="color-b">Mari hidup sehat dengan berolahraga badmminton
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="/booking"><span class="price-a">Booking Disini</span></a>
+                      <a href="/member/login"><span class="price-a">Booking Disini</span></a>
                     </p>
                   </div>
                 </div>
@@ -68,13 +68,13 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Badminton Jaya
+                    <p class="intro-title-top">Badminton Hebat
                     </p>
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">Kurangi berat badanmu dengan bermain badminton
+                      <span class="color-b">Mari hidup sehat dengan berolahraga badmminton
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="/booking"><span class="price-a">Booking Disini</span></a>
+                      <a href="/member/login"><span class="price-a">Booking Disini</span></a>
                     </p>
                   </div>
                 </div>
